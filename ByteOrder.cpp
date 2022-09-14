@@ -20,7 +20,6 @@ int main(int argc, char* argv[])
 	u_short x2 = htons(x1);
 	u_long  y2;
 
-
 	//// 호스트 바이트 -> 네트워크 바이트
 	//printf("[호스트 바이트 -> 네트워크 바이트]\n");
 	//printf("%#x -> %#x\n", x1, x2 = htons(x1));
@@ -37,6 +36,8 @@ int main(int argc, char* argv[])
 	
 	//printf("%d",IsBigEndian());
 	// 윈속 종료
+	printf("리틀엔디언? : %d\n", IsLittleEndian());
+	printf("빅엔디언? : %d\n", IsBigEndian());
 	WSACleanup();
 	return 0;
 }
