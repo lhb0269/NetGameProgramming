@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 	//// 잘못된 예
 	//printf("\n[잘못된 사용의 예]\n");
 	//printf("%#x -> %#x\n", x1, htonl(x1));
-	
+
 	//printf("%d",IsBigEndian());
 	// 윈속 종료
 	printf("리틀엔디언? : %d\n", IsLittleEndian());
@@ -44,13 +44,15 @@ int main(int argc, char* argv[])
 
 bool IsLittleEndian() {
 	u_short x = 0x1234;
-	if (((char*)&x)[0])
-		return true;
-	return false;
+	u_short x2 = htons(x);
+	if (x == x2)
+		return false;
+	return true;
 }
 bool IsBigEndian() {
 	u_short x = 0x1234;
-	if (((char*)&x)[0] == 0)
+	u_short x2 = htons(x);
+	if (x == x2)
 		return true;
 	return false;
 }
