@@ -42,6 +42,10 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
+//n to h
+//big to 호슽의 정렬방식
+//h to n
+//big to 상수
 bool IsLittleEndian() {
 	u_short x = 0x1234;
 	u_short x2 = htons(x);
