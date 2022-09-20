@@ -24,5 +24,11 @@
     <ClCompile Include="ByteOrder.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="IPAddr.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="NameResolution.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

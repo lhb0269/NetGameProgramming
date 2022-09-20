@@ -1,3 +1,2 @@
-﻿  ByteOrder.cpp
-C:\Users\lhb02\source\repos\NetGameProgramming\NetGameProgramming\ByteOrder.cpp(21,10): warning C4101: 'y2' :참조되지 않은 지역 변수입니다.
+﻿  NameResolution.cpp
   NetGameProgramming.vcxproj -> C:\Users\lhb02\source\repos\NetGameProgramming\x64\Debug\NetGameProgramming.exe
