@@ -34,13 +34,14 @@ bool GetIPAddr(const char* name, struct in_addr* addr)
 	while (ptr->h_aliases[i] != NULL) {
 		printf("별칭 이름 = %s\n", ptr->h_aliases[i]);
 		++i;
-	}
+	}  
 	printf("\n");
 	i = 0;
 	while (ptr->h_addr_list[i] != NULL) {
 		char str[INET_ADDRSTRLEN];
-		inet_ntop(AF_INET, ptr->h_addr_list[i], str, sizeof(str));
+		inet_ntop(AF_INET,ptr->h_addr_list[i], str, sizeof(str));
 		printf("IP주소 = %s\n", str);
+		printf("IP주소 = %s\n", inet_ntoa(*(IN_ADDR*)ptr->h_addr_list[i]));
 		++i;
 	}
 	if (ptr->h_addrtype != AF_INET)
