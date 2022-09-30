@@ -1,0 +1,11 @@
+
+*.vsidx
+*.lock
+.vs/NetGameProgramming/v17/.suo
+*.db
+*.ipch
+*.idb
+*.idb
+*.pdb
+*.vcxproj
+*.vcxproj
