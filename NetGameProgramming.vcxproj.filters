@@ -39,5 +39,11 @@
     <ClCompile Include="TCPClient2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="5-1Client.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="5-2Client.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
