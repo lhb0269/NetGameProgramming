@@ -1,4 +1,4 @@
-//고정 길이 데이터 방식
+//EOR 방식
 
 #define _WINSOCK_DEPRECATED_NO_WARNINGS // 최신 VC++ 컴파일 시 경고 방지
 #define _CRT_SECURE_NO_WARNINGS
@@ -47,19 +47,12 @@ int main(int argc, char* argv[]) {
 	WSADATA wsa;
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
 		return 1;
-
-	//소켓 생성
-	SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
-	if (sock == INVALID_SOCKET) err_quit("socket()");
-
 	//connect()
 	struct sockaddr_in serveraddr;
 	memset(&serveraddr, 0, sizeof(serveraddr));
 	serveraddr.sin_family = AF_INET;
 	inet_pton(AF_INET, SERVERIP, &serveraddr.sin_addr);
 	serveraddr.sin_port = htons(SERVERPORT);
-	retval = connect(sock, (struct sockaddr*)&serveraddr, sizeof(serveraddr));
-	if (retval == SOCKET_ERROR)err_quit("connect()");
 
 	//데이터 통신에 사용할 변수
 	char buf[BUFSIZE];
@@ -72,24 +65,20 @@ int main(int argc, char* argv[]) {
 	int len;
 	//서버와 데이터 통신
 	for (int i = 0; i < 4; i++) {
-		//데이터 입력
+		SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
+		if (sock == INVALID_SOCKET) err_quit("socket()");
+
+		retval = connect(sock, (struct sockaddr*)&serveraddr, sizeof(serveraddr));
+		if (retval == SOCKET_ERROR) err_quit("connect()");
+
 		len = (int)strlen(testdata[i]);
 		strncpy(buf, testdata[i], len);
-		//데이터 보내기
-		retval = send(sock,(char*)&len, sizeof(int), 0);
-		if (retval == SOCKET_ERROR) {
-			err_display("send()");
-			break;
-		}
-		retval = send(sock, buf, len, 0);
-		if (retval == SOCKET_ERROR) {
-			err_display("send()");
-			break;
-		}
-		printf("[TCP 클라이언트] %d+%d 바이트를 보냈습니다.\n",(int)sizeof(int), retval);
-	}
-	closesocket(sock);
 
+		retval = send(sock, buf, len, 0);
+
+		printf("[TCP 클라이언트] %d+%d 바이트를 보냈습니다.\n", (int)sizeof(int), retval);
+		closesocket(sock);
+	}
 	WSACleanup();
 	return 0;
 }

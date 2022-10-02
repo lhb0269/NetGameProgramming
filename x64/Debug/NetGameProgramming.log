@@ -1,4 +1,2 @@
-﻿  5-2Client.cpp
-C:\Users\lhb02\OneDrive\바탕 화면\NetGameProgramming\5-2Client.cpp(22,64): error C2664: 'int MessageBoxA(HWND,LPCSTR,LPCSTR,UINT)': 인수 3을(를) 'LPCWSTR'에서 'LPCSTR'(으)로 변환할 수 없습니다.
-C:\Users\lhb02\OneDrive\바탕 화면\NetGameProgramming\5-2Client.cpp(22,47): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(9153,1): message : 'MessageBoxA' 선언을 참조하십시오.
+﻿  5-3Client.cpp
+  NetGameProgramming.vcxproj -> C:\Users\lhb02\OneDrive\바탕 화면\NetGameProgramming\x64\Debug\NetGameProgramming.exe
