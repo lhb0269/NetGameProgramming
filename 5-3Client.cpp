@@ -61,6 +61,8 @@ int main(int argc, char* argv[]) {
 	retval = connect(sock, (struct sockaddr*)&serveraddr, sizeof(serveraddr));
 	if (retval == SOCKET_ERROR)err_quit("connect()");
 
+
+
 	//데이터 통신에 사용할 변수
 	char buf[BUFSIZE];
 	const char* testdata[] = {

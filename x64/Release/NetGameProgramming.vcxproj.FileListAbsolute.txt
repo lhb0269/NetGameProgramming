@@ -1,1 +1,2 @@
 C:\Users\lhb02\OneDrive\바탕 화면\NetGameProgramming\x64\Release\NetGameProgramming.exe
+C:\Users\lhb02\source\repos\NetGameProgramming\NetGameProgramming\x64\Release\NetGameProgramming.exe

@@ -10,7 +10,7 @@
 
 char* SERVERIP = (char*)"127.0.0.1";
 #define SERVERPORT 9000
-#define BUFSIZE 50
+#define BUFSIZE 32768
 
 void err_quit(const char* msg)
 {
@@ -37,6 +37,10 @@ void err_display(const char* msg)
 	printf("[%s] %s", msg, (char*)lpMsgBuf);
 	LocalFree(lpMsgBuf);
 }
+typedef struct Files {
+	char fname[100];
+	long long fsize;
+}Files;
 int main(int argc, char* argv[]) {
 	int retval;
 
@@ -47,6 +51,7 @@ int main(int argc, char* argv[]) {
 	WSADATA wsa;
 	if (WSAStartup(MAKEWORD(2, 2), &wsa) != 0)
 		return 1;
+
 	//connect()
 	struct sockaddr_in serveraddr;
 	memset(&serveraddr, 0, sizeof(serveraddr));
@@ -54,8 +59,47 @@ int main(int argc, char* argv[]) {
 	inet_pton(AF_INET, SERVERIP, &serveraddr.sin_addr);
 	serveraddr.sin_port = htons(SERVERPORT);
 
-	//데이터 통신에 사용할 변수
+	while (1) {
+		SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
+		if (sock == INVALID_SOCKET) err_quit("socket()");
 
+		retval = connect(sock, (struct sockaddr*)&serveraddr, sizeof(serveraddr));
+		if (retval == SOCKET_ERROR) err_quit("connect()");
+
+
+		FILE* fp;
+		Files f;
+		char buf[BUFSIZE];
+		scanf_s("%s", f.fname);
+		if ((fp = fopen(f.fname, "rb")) == NULL)
+			printf("파일을 읽을 수 없습니다.\n");
+		//파일의 크기 계산 파일의 포인터를 끝으로 이동함
+		fseek(fp, 0, SEEK_END);
+		f.fsize = _ftelli64(fp);
+		//계산이 끝나면 다시 돌려놔야함.
+		fseek(fp, 0, SEEK_SET);
+		printf("파일의 크기  = %lld\n", f.fsize);
+		retval = send(sock, (char*)&f, sizeof(f), 0);
+
+		long long percent = f.fsize / BUFSIZE;
+		unsigned long long count = f.fsize / BUFSIZE;
+
+		while (count) {
+			fread(buf, 1, BUFSIZE, fp);
+			retval = send(sock, buf, BUFSIZE, 0);
+			if (retval == SOCKET_ERROR) err_quit("send()");
+			printf("전송률 = %f %%\n", (float)(percent - count) * 100 / percent);
+			count--;
+			//system("cls");
+		}
+		printf("\n 전송률 = %f %%", (float)(percent - count) * 100 / percent);
+		printf("파일 %s 전송완료\n", f.fname);
+		count = f.fsize - (percent * BUFSIZE);
+		fread(buf, 1, count, fp);
+		retval = send(sock, buf, BUFSIZE, 0);
+		if (retval == SOCKET_ERROR) err_quit("send()");
+		closesocket(sock);
+	}
 	WSACleanup();
 	return 0;
 }
