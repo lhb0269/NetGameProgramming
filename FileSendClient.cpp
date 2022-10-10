@@ -24,7 +24,6 @@ void err_quit(const char* msg)
 	LocalFree(lpMsgBuf);
 	exit(1);
 }
-
 // 소켓 함수 오류 출력
 void err_display(const char* msg)
 {
@@ -42,7 +41,7 @@ typedef struct Files {
 	long long fsize;
 }Files;
 int main(int argc, char* argv[]) {
-	int retval;
+	long long retval;
 
 	//명령행 인수가 있으면 IP 주소로 이동
 	if (argc > 1) SERVERIP = argv[1];
@@ -81,21 +80,15 @@ int main(int argc, char* argv[]) {
 		printf("파일의 크기  = %lld\n", f.fsize);
 		retval = send(sock, (char*)&f, sizeof(f), 0);
 
-		long long percent = f.fsize / BUFSIZE;
-		unsigned long long count = f.fsize / BUFSIZE;
-
-		while (count) {
+		while (BUFSIZE < f.fsize - retval) {
 			fread(buf, 1, BUFSIZE, fp);
-			retval = send(sock, buf, BUFSIZE, 0);
+			retval += send(sock, buf, BUFSIZE, 0);
 			if (retval == SOCKET_ERROR) err_quit("send()");
-			printf("전송률 = %f %%\n", (float)(percent - count) * 100 / percent);
-			count--;
-			//system("cls");
+			printf("전송률 = %f %%\n", (float)retval / (float)f.fsize * 100);
 		}
-		printf("\n 전송률 = %f %%", (float)(percent - count) * 100 / percent);
+		printf("\n 전송률 = %f %%", (float)retval / (float)f.fsize * 100);
 		printf("파일 %s 전송완료\n", f.fname);
-		count = f.fsize - (percent * BUFSIZE);
-		fread(buf, 1, count, fp);
+		fread(buf, 1, f.fsize - (f.fsize / BUFSIZE * BUFSIZE), fp);
 		retval = send(sock, buf, BUFSIZE, 0);
 		if (retval == SOCKET_ERROR) err_quit("send()");
 		closesocket(sock);
