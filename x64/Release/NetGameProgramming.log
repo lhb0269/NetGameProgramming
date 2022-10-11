@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 ﻿  ThreadTCPServer.cpp
 C:\Users\lhb02\source\repos\NetGameProgramming\NetGameProgramming\ThreadTCPServer.cpp(65,10): warning C4129: '%': 문자 이스케이프 시퀀스를 인식할 수 없습니다.
@@ -14,6 +15,12 @@ C:\Users\lhb02\OneDrive\바탕 화면\NetGameProgramming\FileSendClient.cpp(72,1
   8 of 8 functions (100.0%) were compiled.
     4 functions were new in current compilation
 >>>>>>> Stashed changes
+=======
+﻿  ThreadTest2.cpp
+  코드를 생성하고 있습니다.
+  4 of 5 functions (80.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+>>>>>>> parent of 750d850 (10-11 Update)
     0 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
   NetGameProgramming.vcxproj -> C:\Users\lhb02\OneDrive\바탕 화면\NetGameProgramming\x64\Release\NetGameProgramming.exe
