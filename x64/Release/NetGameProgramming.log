@@ -1,6 +1,32 @@
+<<<<<<< HEAD
 ﻿  코드를 생성하고 있습니다.
   0 of 10 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
+=======
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+﻿  ThreadTCPServer.cpp
+C:\Users\lhb02\source\repos\NetGameProgramming\NetGameProgramming\ThreadTCPServer.cpp(65,10): warning C4129: '%': 문자 이스케이프 시퀀스를 인식할 수 없습니다.
+  코드를 생성하고 있습니다.
+  7 of 7 functions (100.0%) were compiled.
+    3 functions were new in current compilation
+=======
+﻿  FileSendClient.cpp
+C:\Users\lhb02\OneDrive\바탕 화면\NetGameProgramming\FileSendClient.cpp(72,11): warning C4473: 'scanf_s': 서식 문자열에 대한 인수가 충분하게 전달되지 않았습니다.
+C:\Users\lhb02\OneDrive\바탕 화면\NetGameProgramming\FileSendClient.cpp(72,11): message : 자리 표시자 및 해당 매개 변수에는 variadic 인수가 2개 필요하지만 1개가 제공되었습니다.
+C:\Users\lhb02\OneDrive\바탕 화면\NetGameProgramming\FileSendClient.cpp(72,11): message : 누락된 variadic 인수 2이(가) 서식 문자열 '%s'에 필요합니다.
+C:\Users\lhb02\OneDrive\바탕 화면\NetGameProgramming\FileSendClient.cpp(72,11): message : 이 인수는 버퍼 크기로 사용됩니다.
+  코드를 생성하고 있습니다.
+  8 of 8 functions (100.0%) were compiled.
+    4 functions were new in current compilation
+>>>>>>> Stashed changes
+=======
+﻿  ThreadTest2.cpp
+  코드를 생성하고 있습니다.
+  4 of 5 functions (80.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+>>>>>>> parent of 750d850 (10-11 Update)
+>>>>>>> f98bb4b85034eed3d60818a2285111b3cdf3031b
     0 functions had inline decision re-evaluated but remain unchanged
   코드를 생성했습니다.
-  NetGameProgramming.vcxproj -> C:\Users\lhb02\source\repos\NetGameProgramming\x64\Release\NetGameProgramming.exe
+  NetGameProgramming.vcxproj -> C:\Users\lhb02\OneDrive\바탕 화면\NetGameProgramming\x64\Release\NetGameProgramming.exe

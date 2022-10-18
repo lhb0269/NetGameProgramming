@@ -60,6 +60,7 @@
     <ClCompile Include="ThreadTest2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="ThreadTest3.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -75,5 +76,7 @@
     <ClCompile Include="Events.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+=======
+>>>>>>> f98bb4b85034eed3d60818a2285111b3cdf3031b
   </ItemGroup>
 </Project>
