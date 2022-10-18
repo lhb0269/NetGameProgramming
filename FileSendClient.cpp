@@ -1,5 +1,3 @@
-//EOR 방식
-
 #define _WINSOCK_DEPRECATED_NO_WARNINGS // 최신 VC++ 컴파일 시 경고 방지
 #define _CRT_SECURE_NO_WARNINGS
 #pragma comment(lib, "ws2_32")
@@ -8,7 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char* SERVERIP = (char*)"127.0.0.1";
+char SERVERIP[50];
 #define SERVERPORT 9000
 #define BUFSIZE 32768
 
@@ -41,10 +39,14 @@ typedef struct Files {
 	long long fsize;
 }Files;
 int main(int argc, char* argv[]) {
-	long long retval;
-
+	int retval;
+	long long send_datasize = 0;
 	//명령행 인수가 있으면 IP 주소로 이동
-	if (argc > 1) SERVERIP = argv[1];
+	//if (argc > 1) SERVERIP = argv[1];
+
+	printf("서버의 IP 입력  에시)127.0.0.1     :");
+	scanf("%s", &SERVERIP);
+	printf("\n");
 
 	//윈속 초기화
 	WSADATA wsa;
@@ -64,11 +66,11 @@ int main(int argc, char* argv[]) {
 
 		retval = connect(sock, (struct sockaddr*)&serveraddr, sizeof(serveraddr));
 		if (retval == SOCKET_ERROR) err_quit("connect()");
-
-
 		FILE* fp;
 		Files f;
 		char buf[BUFSIZE];
+		send_datasize = 0;
+		printf("보낼 파일 이름 입력\n");
 		scanf_s("%s", f.fname);
 		if ((fp = fopen(f.fname, "rb")) == NULL)
 			printf("파일을 읽을 수 없습니다.\n");
@@ -80,17 +82,19 @@ int main(int argc, char* argv[]) {
 		printf("파일의 크기  = %lld\n", f.fsize);
 		retval = send(sock, (char*)&f, sizeof(f), 0);
 
-		while (BUFSIZE < f.fsize - retval) {
+		while (BUFSIZE < f.fsize - send_datasize) {
 			fread(buf, 1, BUFSIZE, fp);
-			retval += send(sock, buf, BUFSIZE, 0);
-			if (retval == SOCKET_ERROR) err_quit("send()");
-			printf("전송률 = %f %%\n", (float)retval / (float)f.fsize * 100);
+			send_datasize += send(sock, buf, BUFSIZE, 0);
+			if (send_datasize == SOCKET_ERROR) err_quit("send()");
+			printf("전송률 = %f %%\r", (float)send_datasize / (float)f.fsize * 100);
 		}
-		printf("\n 전송률 = %f %%", (float)retval / (float)f.fsize * 100);
-		printf("파일 %s 전송완료\n", f.fname);
+
 		fread(buf, 1, f.fsize - (f.fsize / BUFSIZE * BUFSIZE), fp);
 		retval = send(sock, buf, BUFSIZE, 0);
 		if (retval == SOCKET_ERROR) err_quit("send()");
+		send_datasize += f.fsize - (f.fsize / BUFSIZE * BUFSIZE);
+		printf("\n 전송률 = %f %%", (float)send_datasize / (float)f.fsize * 100);
+		printf("파일 %s 전송완료\n", f.fname);
 		closesocket(sock);
 	}
 	WSACleanup();
