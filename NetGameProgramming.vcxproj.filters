@@ -1,82 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="sample.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="InitSocket.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ByteOrder.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="IPAddr.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="NameResolution.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="TCPServer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="TCPClient.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="TCPClient2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="5-1Client.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="5-2Client.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="5-3Client.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="5-4Cilent.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="FileSendClient.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ThreadTest1.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ThreadTest2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="ThreadTest3.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ThreadTCPServer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CriticalSections.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CriticalSections2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Events.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-=======
->>>>>>> f98bb4b85034eed3d60818a2285111b3cdf3031b
+    <ClCompile Include="5-1Client.cpp" />
+    <ClCompile Include="5-2Client.cpp" />
+    <ClCompile Include="5-3Client.cpp" />
+    <ClCompile Include="5-4Cilent.cpp" />
+    <ClCompile Include="ByteOrder.cpp" />
+    <ClCompile Include="CriticalSections2.cpp" />
+    <ClCompile Include="CriticalSections.cpp" />
+    <ClCompile Include="Events.cpp" />
+    <ClCompile Include="FileSendClient.cpp" />
+    <ClCompile Include="InitSocket.cpp" />
+    <ClCompile Include="IPAddr.cpp" />
+    <ClCompile Include="NameResolution.cpp" />
+    <ClCompile Include="sample.cpp" />
+    <ClCompile Include="TCPClient.cpp" />
+    <ClCompile Include="TCPClient2.cpp" />
+    <ClCompile Include="TCPServer.cpp" />
+    <ClCompile Include="ThreadTCPServer.cpp" />
+    <ClCompile Include="ThreadTest1.cpp" />
+    <ClCompile Include="ThreadTest2.cpp" />
+    <ClCompile Include="ThreadTest3.cpp" />
+    <ClCompile Include="UDPClient.cpp" />
   </ItemGroup>
 </Project>
